@@ -5,22 +5,41 @@ import Player from './Player.js';
 import rock from './assets/rock.png';
 import paper from './assets/paper.jpg';
 import scissors from './assets/scissors.png';
-// import Image from './Image.js';
+import CalculateWinner from './CalculatorWinner';
+
 
 class App extends Component {
+
+  constructor(props) {
+
+    super(props)
+
+    this.state = {
+      userSelection: null, 
+      computerSelection: null,
+      winner: null,
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+    // this.calculateWinner = this.calculateWinner.bind(this);
+
+  }
 
   handleClick(e) {
 
     let userSelection = e.target.className;
-    let computerSelection = ['rock', 'paper', 'scissors'];
+    let computerSelectionArray = ['rock', 'paper', 'scissors'];
 
-    console.log(userSelection);
-    // google html attributes (like data-name) in jsx ? 
+    this.setState({
+      userSelection: userSelection, 
+      computerSelection: computerSelectionArray[Math.floor(Math.random() * computerSelectionArray.length)],
+    })
 
   }
 
   render() {
 
+    
     return (
       <div className="App">
         <header className="App-header">
@@ -35,8 +54,11 @@ class App extends Component {
         <img className="paper" src={paper} style={{ width: 100, height: 100 }} onClick={this.handleClick} />
         <img className="scissors" src={scissors} style={{ width: 100, height: 100 }} onClick={this.handleClick} />
 
-        <Player name="Player" />
-        <Player name="Computer" />
+        <Player name="Player" selection={this.state.userSelection} score={this.state.userScore}  />
+        <Player name="Computer" selection={this.state.computerSelection} score={this.state.computerSelection} />
+
+        <CalculateWinner player1={this.state.userSelection} player2={this.state.computerSelection} />
+        
 
       </div>
     );

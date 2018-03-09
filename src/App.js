@@ -17,11 +17,9 @@ class App extends Component {
     this.state = {
       userSelection: null, 
       computerSelection: null,
-      winner: null,
     };
 
     this.handleClick = this.handleClick.bind(this);
-    // this.calculateWinner = this.calculateWinner.bind(this);
 
   }
 
@@ -57,7 +55,14 @@ class App extends Component {
         <Player name="Player" selection={this.state.userSelection} score={this.state.userScore}  />
         <Player name="Computer" selection={this.state.computerSelection} score={this.state.computerSelection} />
 
-        <CalculateWinner player1={this.state.userSelection} player2={this.state.computerSelection} />
+        {
+          
+          // https://stackoverflow.com/questions/33840150/onclick-doesnt-render-new-react-component
+          // !!this.state.userSelection && !!this.state.computerSelection ? 
+          <CalculateWinner player1={this.state.userSelection} player2={this.state.computerSelection} /> 
+          // null
+
+        }
         
 
       </div>

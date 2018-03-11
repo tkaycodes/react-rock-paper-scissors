@@ -7,7 +7,8 @@ import paper from './assets/paper.jpg';
 import scissors from './assets/scissors.png';
 import CalculateWinner from './CalculatorWinner';
 
-
+// DETERMINES SELECTION BASED ON USER IMAGE CLICK, AND RANDOMLY GENRATED OPTION FOR COMPUTER
+// CALLS CALCULATE WINNER TO DETERMINE WHO WON
 class App extends Component {
 
   constructor(props) {
@@ -45,21 +46,20 @@ class App extends Component {
           <h1 className="App-title">Welcome to Rock, Paper, Scissors</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          {/* To get started, edit <code>src/App.js</code> and save to reload. */}
+          Click one of the 3 images below to get started !
+          First one to 5 points wins!
         </p>
 
         <img className="rock" src={rock} style={{ width: 100, height: 100 }} onClick={this.handleClick} />
         <img className="paper" src={paper} style={{ width: 100, height: 100 }} onClick={this.handleClick} />
         <img className="scissors" src={scissors} style={{ width: 100, height: 100 }} onClick={this.handleClick} />
 
-        <Player name="Player" selection={this.state.userSelection} score={this.state.userScore}  />
-        <Player name="Computer" selection={this.state.computerSelection} score={this.state.computerSelection} />
-
         {
           
           // https://stackoverflow.com/questions/33840150/onclick-doesnt-render-new-react-component
           // !!this.state.userSelection && !!this.state.computerSelection ? 
-          <CalculateWinner player1={this.state.userSelection} player2={this.state.computerSelection} /> 
+          <CalculateWinner userSelection={this.state.userSelection} computerSelection={this.state.computerSelection} /> 
           // null
 
         }

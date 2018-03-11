@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Score from './Score';
 
+// CONVERTS SELECTIONS TO SCORE, DECLARES WINNER, CALLS SCORE COMPONENT
 class CalculateWinner extends Component {
 
     constructor(props) {
@@ -12,55 +13,152 @@ class CalculateWinner extends Component {
         this.state = {
             userScore: 0,
             computerScore: 0,
-            winner: null
+            winner: null, 
+            ismaxScoreReached: false, 
+            matchWinner: null
         }
+
+        this.handleResetButtonClick = this.handleResetButtonClick.bind(this)
 
     }
 
     componentWillReceiveProps(props) {
 
-        let userSelection = props.player1;
-        let computerSelection = props.player2;
+        let userSelection = props.userSelection;
+        let computerSelection = props.computerSelection;
 
         if (userSelection !== computerSelection) {
             
             if ((userSelection === 'paper')) {
         
                 if  (computerSelection === 'scissors') {
+                    
+                    if (this.state.computerScore !== 5 && this.state.userScore !== 5) {
 
-                    this.setState({
-                        computerScore: this.state.computerScore + 1,
-                        winner: 'computer'
-                    })
-                       
+                        this.setState({
+                            computerScore: this.state.computerScore + 1,
+                            winner: 'computer'
+                        })
+
+                    }
+
+                    else {
+
+                        if (this.state.computerScore === 5) {
+                            this.setState({
+                                ismaxScoreReached: true,
+                                matchWinner: 'computer'
+                            })
+                        }
+
+                        if (this.state.userScore === 5) {
+                            this.setState({
+                                ismaxScoreReached: true,
+                                matchWinner: 'user'
+                            })
+                        } 
+
+                    }
+      
                 }
 
                 else if  (computerSelection === 'rock') {
 
-                    this.setState({
-                        userScore: this.state.userScore + 1,
-                        winner: 'user'
-                    })
+                    if (this.state.computerScore !== 5 && this.state.userScore !== 5) {
+
+                        this.setState({
+                            userScore: this.state.userScore + 1,
+                            winner: 'user'
+                        })
+
+                    }
+
+                    else {
+
+                        if (this.state.computerScore === 5) {
+                            this.setState({
+                                ismaxScoreReached: true,
+                                matchWinner: 'computer'
+                            })
+                        }
+    
+                        if (this.state.userScore === 5) {
+                            this.setState({
+                                ismaxScoreReached: true,
+                                matchWinner: 'user'
+                            })
+                        } 
+                        
+                    }
 
                 }
            
             }
             else if ((userSelection === 'rock')) {
         
+                
                 if  (computerSelection === 'scissors') {
-                       
-                    this.setState({
-                        userScore: this.state.userScore + 1,
-                        winner: 'user'
-                    })
-       
+
+                    if (this.state.computerScore !== 5 && this.state.userScore !== 5) {
+      
+                        this.setState({
+                            userScore: this.state.userScore + 1,
+                            winner: 'user'
+                        })
+
+                    }
+
+                    else {
+
+
+                        if (this.state.computerScore === 5) {
+                            this.setState({
+                                ismaxScoreReached: true,
+                                matchWinner: 'computer'
+                            })
+                        }
+    
+                        if (this.state.userScore === 5) {
+                            this.setState({
+                                ismaxScoreReached: true,
+                                matchWinner: 'user'
+                            })
+                        } 
+                        
+                    }
+
+                    
+    
                 }
+                
                 else if  (computerSelection === 'paper') {
 
-                    this.setState({
-                        computerScore: this.state.computerScore + 1,
-                        winner: 'computer'
-                    })
+                    if (this.state.computerScore !== 5 && this.state.userScore !== 5) {
+
+                        this.setState({
+                            computerScore: this.state.computerScore + 1,
+                            winner: 'computer'
+                        })
+
+                    }
+
+                    else {
+
+                        if (this.state.computerScore === 5) {
+                            this.setState({
+                                ismaxScoreReached: true,
+                                matchWinner: 'computer'
+                            })
+                        }
+    
+                        if (this.state.userScore === 5) {
+                            this.setState({
+                                ismaxScoreReached: true,
+                                matchWinner: 'user'
+                            })
+                        } 
+                        
+                    }
 
                 }
            
@@ -69,19 +167,63 @@ class CalculateWinner extends Component {
 
                 if  (computerSelection === 'rock') {
 
-                    this.setState({
-                        computerScore: this.state.computerScore + 1,
-                        winner: 'computer'
-                    })          
+                    if (this.state.computerScore !== 5 && this.state.userScore !== 5) {
+
+                        this.setState({
+                            computerScore: this.state.computerScore + 1,
+                            winner: 'computer'
+                        })
+
+                    }
+                    
+                    else {
+
+                        if (this.state.computerScore === 5) {
+                            this.setState({
+                                ismaxScoreReached: true,
+                                matchWinner: 'computer'
+                            })
+                        }
+    
+                        if (this.state.userScore === 5) {
+                            this.setState({
+                                ismaxScoreReached: true,
+                                matchWinner: 'user'
+                            })
+                        } 
+                        
+                    }
 
                 }
 
                 else if  (computerSelection === 'paper') {
 
-                    this.setState({
-                        userScore: this.state.userScore + 1,
-                        winner: 'user'
-                    })
+                    if (this.state.computerScore !== 5 && this.state.userScore !== 5) {
+
+                        this.setState({
+                            userScore: this.state.userScore + 1,
+                            winner: 'user'
+                        })
+
+                    }
+
+                    else {
+
+                        if (this.state.computerScore === 5) {
+                            this.setState({
+                                ismaxScoreReached: true,
+                                matchWinner: 'computer'
+                            })
+                        }
+    
+                        if (this.state.userScore === 5) {
+                            this.setState({
+                                ismaxScoreReached: true,
+                                matchWinner: 'user'
+                            })
+                        } 
+                        
+                    }
 
                 }
             }
@@ -95,27 +237,16 @@ class CalculateWinner extends Component {
 
     }
 
-    componentWillMount() {
-        console.log(this.props);
-    }
-
-    componentDidMount() {
-        console.log('mounted');
-    }
-
-    handleClicks() {
-
-        console.log('handle click');
-
+    handleResetButtonClick() {
         this.setState({
-            userScore: this.state.userScore +1, 
-            computerScore: this.state.computerScore +1
-        }); 
-    //     alert('hi');
-
+            userScore: 0,
+            computerScore: 0,
+            winner: null, 
+            ismaxScoreReached: false, 
+            matchWinner: null
+        })
+       return  alert('score reset!')
     }
-
-    
 
     render() {
 
@@ -124,18 +255,35 @@ class CalculateWinner extends Component {
         return (
 
             // null
+
             <div>
 
-                <div onClick={this.handleClicks} style={{backgroundColor: 'red', fontSize: '22px'}}> user picked: {this.props.player1} </div>
-                <div onClick={this.handleClicks} style={{backgroundColor: 'red', fontSize: '22px'}}> computer picked: {this.props.player2}</div>
+                <div style={{backgroundColor: 'red', fontSize: '22px'}}> user picked: {this.props.userSelection} </div>
+                <div  style={{backgroundColor: 'red', fontSize: '22px'}}> computer picked: {this.props.computerSelection}</div>
 
                 {
                     !!this.state.winner ?
-                    <div onClick={this.handleClicks} style={{backgroundColor: 'red', fontSize: '22px'}}> {this.state.winner} WINS!</div> :
+                    <div style={{backgroundColor: 'red', fontSize: '22px'}}> {this.state.winner} WINS!</div> :
                     null
                 }
 
-                <Score computerScore = {this.state.computerScore} userScore = {this.state.userScore}  />
+                {   
+                    
+                    <Score computerScore = {this.state.computerScore} userScore = {this.state.userScore}  />
+                    
+
+                }
+
+                {       
+                    !!this.state.ismaxScoreReached ?
+                    <div><span>GAME OVER ! : </span> {this.state.matchWinner} <span>Wins the Match!</span></div> :
+                    <div>No one has won yet</div>
+
+
+
+                }
+
+                <button style={{backgroundColor: 'gray', padding: '5px', border: '1px solid red'}} onClick={this.handleResetButtonClick}>Reset Game</button>
                 
             </div> 
 

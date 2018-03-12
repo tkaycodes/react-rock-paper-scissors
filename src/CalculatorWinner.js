@@ -19,6 +19,7 @@ class CalculateWinner extends Component {
         }
 
         this.handleResetButtonClick = this.handleResetButtonClick.bind(this)
+        this.alertParent = this.alertParent.bind(this)
 
     }
 
@@ -248,6 +249,10 @@ class CalculateWinner extends Component {
        return  alert('score reset!')
     }
 
+    alertParent() {
+
+    }
+
     render() {
 
 
@@ -283,7 +288,7 @@ class CalculateWinner extends Component {
 
                 }
 
-                <button style={{backgroundColor: 'gray', padding: '5px', border: '1px solid red'}} onClick={this.handleResetButtonClick}>Reset Game</button>
+                <button style={{backgroundColor: 'gray', padding: '5px', border: '1px solid red'}} onClick={this.handleResetButtonClick} >Reset Game</button>
                 
             </div> 
 
